@@ -3,12 +3,12 @@ import binascii
 import os
 
 # Definir a chave pública para fins de teste
-public_key_hex = '027a51392bace353f4c3788c9c090ef4f635ec211159ec3b9f1bb7da7679517e12'
+public_key_hex = '03633cbe3ec02b9401c5effa144c5b4d22f87940259634858fc7e59b1c09937852'
 
 # Função para gerar uma chave privada de 130 bits com os primeiros 32 caracteres sendo zeros
-def generate_255_bit_private_key():
+def generate_130_bit_private_key():
     # Gerar 64 bits aleatórios (16 dígitos hexadecimais)
-    random_part = binascii.hexlify(os.urandom(32)).decode('utf-8')  # 16 bytes = 128 bits = 32 hex digits
+    random_part = binascii.hexlify(os.urandom(16)).decode('utf-8')  # 16 bytes = 128 bits = 32 hex digits
     # Preencher os primeiros 32 caracteres com zeros
     private_key = '0' * 32 + random_part[-32:]
     return private_key
@@ -22,15 +22,15 @@ def get_public_key_from_private(private_key_hex):
 # Função principal de força bruta
 def brute_force_search(public_key_hex):
     print(f"Chave Pública: {public_key_hex}")
-    print(f"Intervalo de Chaves: 0x{'0' * 32}DFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEE3590149D95F8C3447D812BB362F7920 a 0x{'0' * 32}FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141")
+    print(f"Intervalo de Chaves: 0x{'0' * 32}00000000000000000000000000000000 a 0x{'0' * 32}ffffffffffffffffffffffffffffffff")
 
     while True:
         # Gerar uma chave privada aleatória de 130 bits
-        private_key_hex = generate_255_bit_private_key()
-        
+        private_key_hex = generate_130_bit_private_key()
+
         # Obter a chave pública correspondente
         derived_public_key_hex = get_public_key_from_private(private_key_hex)
-        
+
         # Verificar se a chave pública derivada corresponde à chave pública fornecida
         if derived_public_key_hex == public_key_hex:
             print(f"Chave privada encontrada: {private_key_hex}")
@@ -40,7 +40,7 @@ def brute_force_search(public_key_hex):
                 f.write(f"Chave Privada: {private_key_hex}\n")
                 f.write("\n")
             break
-        
+
         print(f"Tentando chave privada: {private_key_hex}")
 
 if __name__ == "__main__":
