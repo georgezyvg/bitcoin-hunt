@@ -3,12 +3,12 @@ import binascii
 import os
 
 # Definir a chave pública para fins de teste
-public_key_hex = '03633cbe3ec02b9401c5effa144c5b4d22f87940259634858fc7e59b1c09937852'
+public_key_hex = '027a51392bace353f4c3788c9c090ef4f635ec211159ec3b9f1bb7da7679517e12'
 
 # Função para gerar uma chave privada de 130 bits com os primeiros 32 caracteres sendo zeros
-def generate_130_bit_private_key():
+def generate_255_bit_private_key():
     # Gerar 64 bits aleatórios (16 dígitos hexadecimais)
-    random_part = binascii.hexlify(os.urandom(16)).decode('utf-8')  # 16 bytes = 128 bits = 32 hex digits
+    random_part = binascii.hexlify(os.urandom(32)).decode('utf-8')  # 16 bytes = 128 bits = 32 hex digits
     # Preencher os primeiros 32 caracteres com zeros
     private_key = '0' * 32 + random_part[-32:]
     return private_key
