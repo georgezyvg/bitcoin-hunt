@@ -26,7 +26,7 @@ def brute_force_search(public_key_hex):
 
     while True:
         # Gerar uma chave privada aleatória de 130 bits
-        private_key_hex = generate_130_bit_private_key()
+        private_key_hex = generate_255_bit_private_key()
         
         # Obter a chave pública correspondente
         derived_public_key_hex = get_public_key_from_private(private_key_hex)
