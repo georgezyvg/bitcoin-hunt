@@ -5,8 +5,8 @@ import os
 # Definir a chave pública para fins de teste
 public_key_hex = '03633cbe3ec02b9401c5effa144c5b4d22f87940259634858fc7e59b1c09937852'
 
-# Função para gerar uma chave privada de 130 bits com os primeiros 32 caracteres sendo zeros
-def generate_130_bit_private_key():
+# Função para gerar uma chave privada de 159 bits com os primeiros 32 caracteres sendo zeros
+def generate_159_bit_private_key():
     # Gerar 64 bits aleatórios (16 dígitos hexadecimais)
     random_part = binascii.hexlify(os.urandom(16)).decode('utf-8')  # 16 bytes = 128 bits = 32 hex digits
     # Preencher os primeiros 32 caracteres com zeros
@@ -25,8 +25,8 @@ def brute_force_search(public_key_hex):
     print(f"Intervalo de Chaves: 0x{'0' * 32}00000000000000000000000000000000 a 0x{'0' * 32}ffffffffffffffffffffffffffffffff")
 
     while True:
-        # Gerar uma chave privada aleatória de 130 bits
-        private_key_hex = generate_130_bit_private_key()
+        # Gerar uma chave privada aleatória de 159 bits
+        private_key_hex = generate_159_bit_private_key()
 
         # Obter a chave pública correspondente
         derived_public_key_hex = get_public_key_from_private(private_key_hex)
