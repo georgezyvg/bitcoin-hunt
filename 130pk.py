@@ -3,7 +3,7 @@ import binascii
 import os
 
 # Definir a chave pública para fins de teste
-public_key_hex = '03633cbe3ec02b9401c5effa144c5b4d22f87940259634858fc7e59b1c09937852'
+public_key_hex = '02e0a8b039282faf6fe0fd769cfbc4b6b4cf8758ba68220eac420e32b91ddfa673'
 
 # Função para gerar uma chave privada de 159 bits com os primeiros 32 caracteres sendo zeros
 def generate_159_bit_private_key():
