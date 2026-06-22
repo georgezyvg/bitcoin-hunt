@@ -22,7 +22,7 @@ def get_public_key_from_private(private_key_hex):
 # Função principal de força bruta
 def brute_force_search(public_key_hex):
     print(f"Chave Pública: {public_key_hex}")
-    print(f"Intervalo de Chaves: 0x{'0' * 32}8000000000000000000000000000000000000000 a 0x{'0' * 32}ffffffffffffffffffffffffffffffff")
+    print(f"Intervalo de Chaves: 0x{'0' * 32}8000000000000000000000000000000000000000 a 0x{'0' * 32}ffffffffffffffffffffffffffffffffffffffff")
 
     while True:
         # Gerar uma chave privada aleatória de 159 bits
